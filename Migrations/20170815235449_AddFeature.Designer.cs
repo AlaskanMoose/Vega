@@ -8,7 +8,7 @@ using vega.Persistence;
 namespace Vega.Migrations
 {
     [DbContext(typeof(VegaDbContext))]
-    [Migration("20170815233633_AddFeature")]
+    [Migration("20170815235449_AddFeature")]
     partial class AddFeature
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -16,6 +16,20 @@ namespace Vega.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.0-rtm-22752")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("vega.Models.Feature", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(255);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Features");
+                });
 
             modelBuilder.Entity("vega.Models.Make", b =>
                 {
