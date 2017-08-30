@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
@@ -24,10 +25,9 @@ namespace vega.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateVehicle([FromBody] SaveVehicleResource vehicleResource)
         {
+            throw new Exception();
             if (!ModelState.IsValid)
-            {
                 return BadRequest(ModelState);
-            }
 
             var vehicle = mapper.Map<SaveVehicleResource, Vehicle>(vehicleResource);
             vehicle.LastUpdate = DateTime.Now;
@@ -45,9 +45,7 @@ namespace vega.Controllers
         public async Task<IActionResult> UpdateVehicle(int id, [FromBody] SaveVehicleResource vehicleResource)
         {
             if (!ModelState.IsValid)
-            {
                 return BadRequest(ModelState);
-            }
 
             var vehicle = await repository.GetVehicle(id);
 
