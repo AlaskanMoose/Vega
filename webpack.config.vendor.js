@@ -33,6 +33,7 @@ module.exports = (env) => {
                 'es6-shim',
                 'es6-promise',
                 'event-source-polyfill',
+                'font-awesome/css/font-awesome.css',
                 'jquery',
                 'raven-js',
                 'underscore',
